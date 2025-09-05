@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web-Bug</title>
+  <style>
+    body {
+      background: #000;
+      font-family: Arial, sans-serif;
+      color: #c63bff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    /* header fixed */
+    .header {
+      background: linear-gradient(135deg, #ff00ff, #8000ff);
+      width: 100%;
+      padding: 15px 0;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 4px 10px #000;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    /* kontainer isi */
+    .content {
+      flex: 1;
+      padding: 90px 20px 80px; /* jarak header & footer */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      position: relative;
+      background: #111;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #c63bff55;
+      width: 300px;
+      text-align: center;
+    }
+
+    .beta {
+      position: absolute;
+      top: 8px;
+      right: 50%;
+      transform: translateX(50%);
+      font-size: 14px;
+      color: #ff00ff;
+      font-weight: bold;
+      opacity: 0.8;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #c63bff;
+      border-radius: 10px;
+      background: #000;
+      color: #fff;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    input::placeholder {
+      color: #999;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #c63bff;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #9a27cc;
+    }
+
+    /* animasi goyang */
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(-10px); }
+      40% { transform: translateX(10px); }
+      60% { transform: translateX(-10px); }
+      80% { transform: translateX(10px); }
+      100% { transform: translateX(0); }
+    }
+    .shake {
+      animation: shake 0.5s;
+    }
+
+    /* footer */
+    .footer {
+      background: linear-gradient(135deg, #ff00ff, #8000ff);
+      width: 100%;
+      padding: 8px 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+
+    .footer button {
+      background: transparent;
+      border: none;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer button span {
+      font-size: 16px;
+      margin-bottom: 3px;
+    }
+
+    .footer button:hover {
+      color: #ffccff;
+    }
+
+    /* Halaman Info */
+    .info-box {
+      background: linear-gradient(135deg, #5a00b3, #c63bff);
+      border: 2px solid #c63bff;
+      border-radius: 12px;
+      margin: 10px 0;
+      padding: 15px;
+      text-align: center;
+      color: #fff;
+    }
+    .info-big { height: 100px; }
+    .info-medium { height: 70px; }
+    .info-small { height: 40px; }
+
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <!-- header -->
+  <div class="header">WEB-BUG</div>
+
+  <!-- konten -->
+  <div class="content">
+    <!-- Halaman WhatsApp -->
+    <div id="page-whatsapp" class="card">
+      <div class="beta">Beta Test</div>
+      <div class="field">
+        <label for="target">Target Number</label>
+        <input id="target" type="tel" placeholder="Example:628xxxxxxx|+628xxxxxxx">
+      </div>
+      <div class="field">
+        <label for="bug">Select Bug</label>
+        <select id="bug">
+          <option>Delay Hard</option>
+          <option>Delay Invis</option>
+          <option>DelayXBulldozer</option>
+          <option>MsgDelay</option>
+        </select>
+      </div>
+      <button id="sendBtn">❀ SEND BUG</button>
+    </div>
+
+    <!-- Halaman Infomation -->
+    <div id="page-info" class="hidden" style="width:300px;">
+      <div class="info-box info-big">Hai kamu yang sedang membaca ini, ini hanya demo/simulasi tentang web bug. (!!Tidak ada efek bug!!)
+      Saluran:https://whatsapp.com/channel/
+      0029VbBNNmxb7dmefdL7bk70U</div>
+      <div class="info-box info-medium">Join Saluran untuk mendapatkan info lebih lanjut. Saya akan bikin web/apk asli</div>
+      <div class="info-box info-small">Developer :Zeyy&Ziole.
+      Zeyy:@ZeyyoffcShadowX
+      Ziole:@Ziole_V</div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="footer">
+    <button onclick="showPage('whatsapp')"><span>𓌳</span>Whatsapp</button>
+    <button onclick="showPage('info')"><span>ⓘ</span>Infomation</button>
+  </div>
+
+  <script>
+    const btn = document.getElementById("sendBtn");
+
+    function errorShake(msg) {
+      alert(msg);
+      btn.classList.add("shake");
+      setTimeout(() => btn.classList.remove("shake"), 500);
+    }
+
+    btn.addEventListener("click", () => {
+      const target = document.getElementById("target").value.trim();
+
+      if (!target) {
+        errorShake("⚠️ Nomor nya mana bego?!");
+        return;
+      }
+
+      if (!(target.startsWith("+62") || target.startsWith("62"))) {
+        errorShake("❌ Kaya nya bukan nomor indo deh\nCoba pake (628xxxxxxx|+628xxxxxxx).");
+        return;
+      }
+
+      const digits = target.replace(/\D/g, ""); // ambil angka doang
+      if (digits.length < 10 || digits.length > 15) {
+        errorShake("❌ Uhm...??");
+        return;
+      }
+
+      // kalau valid
+      alert(`✅ Berhasil\nBerhasil dikirim ke: ${target}`);
+    });
+
+    function showPage(page) {
+      document.getElementById("page-whatsapp").classList.add("hidden");
+      document.getElementById("page-info").classList.add("hidden");
+      if (page === "whatsapp") {
+        document.getElementById("page-whatsapp").classList.remove("hidden");
+      } else {
+        document.getElementById("page-info").classList.remove("hidden");
+      }
+    }
+  </script>
+</body>
+</html>
